@@ -140,7 +140,7 @@ complex& complex::operator*= (const double& x) {
 
 complex& complex::operator/= (const complex& c) {
 	if (c == 0)
-		throw "eroare impartire la 0";
+		throw runtime_error("eroare impartire la 0");
 	else {
 		double x = this->Re;
 		this->Re = (this->Re*c.get_Re() + this->Im*c.get_Im()) / (c.get_Re()*c.get_Re() + c.get_Im()*c.get_Im());
@@ -151,7 +151,7 @@ complex& complex::operator/= (const complex& c) {
 
 complex& complex::operator/= (const double& x) {
 	if (x == 0)
-		throw "eroare impartire la 0";
+		throw runtime_error("eroare impartire la 0");
 	else {
 		this->Re = this->Re / x;
 		this->Im = this->Im / x;
@@ -244,7 +244,7 @@ complex operator* (double d, complex c2) {
 complex operator/ (complex c1, complex c2) {
 	complex obj;
 	if (c2 == 0)
-		throw "eroare impartire la 0";
+		throw runtime_error("eroare impartire la 0");
 	else {
 		obj.Re = (c1.Re*c2.Re + c1.Im*c2.Im) / (c2.Re*c2.Re + c2.Im*c2.Im);
 		obj.Im = (c1.Im*c2.Re - c1.Re * c2.Im) / (c2.Re*c2.Re + c2.Im*c2.Im);
@@ -255,7 +255,7 @@ complex operator/ (complex c1, complex c2) {
 complex operator/ (complex c1, double d) {
 	complex obj;
 	if (d == 0)
-		throw ("eroare impartire la 0");
+		throw runtime_error("eroare impartire la 0");
 	else {
 		obj.Re = c1.Re / d;
 		obj.Im = c1.Im / d;
@@ -266,7 +266,7 @@ complex operator/ (complex c1, double d) {
 complex operator/ (double d, complex c2) {
 	complex obj;
 	if (c2 == 0)
-		throw "eroare impartire la 0";
+		throw runtime_error("eroare impartire la 0");
 	else {
 		obj.Re = d*c2.Re / (c2.Re*c2.Re + c2.Im*c2.Im);
 		obj.Im = -d*c2.Im / (c2.Re*c2.Re + c2.Im*c2.Im);
@@ -387,7 +387,7 @@ complex RadacinaPatrata(complex c, int n) {
 	else if(n == 2) {
 		return (-x);
 	}
-	else cout << "Numarul radacinii dorite este invalid. Incercati din nou alegand intre 1 si 2";
+	else throw runtime_error ("Numarul radacinii dorite este invalid. Incercati din nou alegand intre 1 si 2");
 } 
 
 
